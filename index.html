@@ -46,6 +46,9 @@
       opacity: 0;
       max-width: 100%;
     }
+    .row {
+      margin: -10px;
+    }
   </style>
   <body class="text-center">
     <div class="alert alert-danger alert-dismissible" role="alert" id="alert">
@@ -68,8 +71,8 @@
             <label for="weight">Weight</label>
             <input type="number" class="form-control" id="weight" min="0" max="100" step="1" value="1">
           </div>
-          <div class="col-md form-group">
-            <label for="addBut" style="opacity:0">Hello there</label>
+          <div class="col-sm form-group">
+            <label for="addBut" class="hidden-xs-down" style="opacity:0">Hello there</label>
             <button type="button" class="btn btn-primary form-control" id="addBut">Add</button>
           </div>
         </div>
