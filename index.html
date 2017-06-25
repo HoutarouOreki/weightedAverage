@@ -6,8 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
+  <style>
+    html {
+      background-color: #F5F5F5;
+      overflow-x: hidden;
+    }
+    body {
+      background-color: inherit;
+      max-width: 575px;
+      margin: auto;
+      overflow-x: hidden;
+    }
+    label {
+      font-size: 1.2em;
+    }
+    input {
+      text-align: center;
+    }
+    #average {
+      font-size: 3.67em;
+      color: cornflowerBlue;
+    }
+    @font-face {
+      font-family: Lobster;
+      src: url('font/Lobster_1.3.otf');
+    }
+    h2 {
+      font-family: monospace;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 2em;
+      text-align: center;
+    }
+    #alert {
+      width: 575px;
+      position: fixed;
+      bottom: 50px;
+      z-index: 20;
+      opacity: 0;
+      max-width: 90%;
+    }
+    .container-fluid {
+      overflow-x: hidden;
+    }
+  </style>
   <body>
     <div class="container-fluid">
     <div class="alert alert-danger alert-dismissible" role="alert" id="alert">
@@ -60,7 +104,6 @@
       </div>
     </form>
     </div>
-	<link rel="stylesheet" href="css/css.css" async>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script
