@@ -44,6 +44,7 @@
       bottom: 50px;
       z-index: 20;
       opacity: 0;
+      max-width: 100%;
     }
   </style>
   <body class="text-center">
@@ -59,15 +60,15 @@
       <hr>
       <form>
         <div class="row">
-          <div class="col-sm form-group">
+          <div class="col-md form-group">
             <label for="grade">Grade</label>
             <input type="number" class="form-control" id="grade" min="0.5" max="6.5" step="0.25" value="0">
           </div>
-          <div class="col-sm form-group">
+          <div class="col-md form-group">
             <label for="weight">Weight</label>
             <input type="number" class="form-control" id="weight" min="0" max="100" step="1" value="1">
           </div>
-          <div class="col-sm form-group">
+          <div class="col-md form-group">
             <label for="addBut" style="opacity:0">Hello there</label>
             <button type="button" class="btn btn-primary form-control" id="addBut">Add</button>
           </div>
