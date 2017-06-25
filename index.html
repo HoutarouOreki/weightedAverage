@@ -3,10 +3,12 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no"> 
+    <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <title>Weighted Average</title>
+    <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/modern-latin-alphabet-lowercase-and-uppercase-lett/154/keyboard-key-order-number-label-sign-512.png">
   </head>
   <style>
     html {
@@ -15,6 +17,7 @@
     }
     body {
       background-color: inherit;
+      min-height: 100%;
       max-width: 575px;
       margin: auto;
       overflow-x: hidden;
@@ -51,17 +54,26 @@
     .container-fluid {
       overflow-x: hidden;
     }
+    .text-muted2 {
+      font-size: 0.5em;
+      margin: 0px;
+      position: absolute;
+      left: 74%;
+      top: 60px;
+      color: #DDF;
+    }
   </style>
   <body>
     <div class="container-fluid">
-    <div class="alert alert-danger alert-dismissible" role="alert" id="alert">
+    <div class="alert alert-danger alert-dismissible text-center" role="alert" id="alert">
       <button type="button" class="close" id="alertClose">
         <span>&times;</span>
       </button>
-      <strong>Something's wrong.</strong> Enter numbers from 0 to 100.
+      <strong>Something's wrong.</strong><br>Enter numbers from 0 to 100.
     </div>
       <br>
       <h2>weightedAverage</h2>
+      <h2 class="text-muted2"><small>/ Jarosław Zgierski 2017</small></h2>
       <hr>
       <form>
         <div class="row">
@@ -103,7 +115,6 @@
           </div>
       </div>
     </form>
-    </div>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script
@@ -150,6 +161,12 @@
         return averGrades;
       }
       function inputCheck() {
+        if (document.getElementById("grade").value == '') {
+          return false;
+        }
+        if (document.getElementById("weight").value == '') {
+          return false;
+        }
         if (document.getElementById("grade").value >= 0 && document.getElementById("grade").value <= 100) {
           if (document.getElementById("weight").value >= 0 && document.getElementById("weight").value <= 100) {
             return true;
@@ -202,6 +219,9 @@
         $("#grades").html("None");
         $("#average").html("N/A");
       })
+      $('.form-control').keypress(function(key){
+        if(key.keyCode==13) $('#addBut').click();
+      });
     </script>
   </body>
 </html>
