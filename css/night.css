@@ -1,0 +1,106 @@
+body {
+  background-color: #212121;
+}
+
+a, a:active, a:visited {
+  color: darkgoldenrod;
+}
+
+a:hover {
+  color: goldenrod;
+}
+
+.antiLink, .antiLink:active, .antiLink:visited {
+  color: snow;
+}
+
+.antiLink:hover {
+  color: white;
+}
+
+.progress-bar-info {
+  background-color: darkcyan;
+}
+
+.progress-bar-danger {
+  background-color: brown;
+}
+
+.progress-bar-success {
+  background-color: darkgreen;
+}
+
+.progress-bar-warning {
+  background-color: darkgoldenrod;
+}
+
+.progress {
+  background-color: lightgray;
+  color: black;
+}
+
+.container-fluid {
+  color: lightgray;
+}
+
+.btn-primary {
+  background-color: #0d47a1;
+  border-color: #0d47a1;
+}
+
+.btn-info {
+  background-color: darkgreen;
+  border-color: darkgreen;
+}
+
+.btn-danger {
+  background-color: brown;
+  border-color: brown;
+}
+
+.btn {
+  color: white;
+}
+
+.btn:hover {
+  color: snow;
+}
+
+.alert {
+  border-color: black;
+}
+
+.alert-success {
+  background-color: #0d47a1;
+  color: #EBF8FC;
+}
+
+.alert-info {
+  background-color: darkgreen;
+  color: #e6fff5;
+}
+
+.alert-danger {
+  background-color: brown;
+  color: #faebeb;
+}
+
+.footer {
+  background-color: rgba(255,255,255,0.01);
+}
+
+.nightP {
+  display: none;
+}
+
+.dayP {
+  display: block;
+}
+
+.progress-bar-default {
+  background-color: #0C5C9E;
+}
+
+#version {
+  color: #272727;
+}
