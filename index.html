@@ -52,7 +52,7 @@
       overflow-x: hidden;
     }
   </style>
-  <body class="text-center">
+  <body>
     <div class="container-fluid">
     <div class="alert alert-danger alert-dismissible" role="alert" id="alert">
       <button type="button" class="close" id="alertClose">
@@ -80,13 +80,13 @@
         </div>
       </form>
       <hr>
-      <div>
+      <div class="text-center">
         <label for="grades">Entered grades:</label>
         <div id="grades">None yet</div>
       </div>
       <hr>
       <div class="row">
-        <div class="col align-self-center" id="average">
+        <div class="col text-center align-self-center" id="average">
           N/A
         </div>
       </div>
@@ -94,11 +94,11 @@
       <form>
         <div class="row">
           <div class="col form-group">
-            <label for="addBut" style="opacity:0"></label>
+            <label for="addBut" style="opacity:0" class="hidden-xs-down"></label>
             <button type="button" class="btn btn-secondary form-control" id="removeLast">Remove Last</button>
           </div>
           <div class="col form-group">
-            <label for="addBut" style="opacity:0"></label>
+            <label for="addBut" style="opacity:0" class="hidden-xs-down"></label>
             <button type="button" class="btn btn-secondary form-control" id="reset">Reset</button>
           </div>
       </div>
