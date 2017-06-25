@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <style>
+    html {
+      background-color: #F5F5F5;
+    }
+    body {
+      background-color: inherit;
+      max-width: 575px;
+      margin: auto;
+    }
+    label {
+      font-size: 1.2em;
+    }
+    input {
+      text-align: center;
+    }
+    #average {
+      font-size: 3.67em;
+      color: cornflowerBlue;
+    }
+    @font-face {
+      font-family: Lobster;
+      src: url('font/Lobster_1.3.otf');
+    }
+    h2 {
+      font-family: monospace;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 2em;
+      margin: auto;
+    }
+    #alert {
+      width: 575px;
+      position: fixed;
+      bottom: 50px;
+      z-index: 20;
+      opacity: 0;
+    }
+  </style>
+  <body class="text-center">
+    <div class="alert alert-danger alert-dismissible" role="alert" id="alert">
+      <button type="button" class="close" id="alertClose">
+        <span>&times;</span>
+      </button>
+      <strong>Something's wrong.</strong> You should check what by hovering over the red input fields.
+    </div>
+    <div class="container">
+      <br>
+      <h2>weightedAverage</h2>
+      <hr>
+      <form>
+        <div class="row">
+          <div class="col-sm form-group">
+            <label for="grade">Grade</label>
+            <input type="number" class="form-control" id="grade" min="0.5" max="6.5" step="0.25" value="0">
+          </div>
+          <div class="col-sm form-group">
+            <label for="weight">Weight</label>
+            <input type="number" class="form-control" id="weight" min="0" max="100" step="1" value="1">
+          </div>
+          <div class="col-sm form-group">
+            <label for="addBut" style="opacity:0">Hello there</label>
+            <button type="button" class="btn btn-primary form-control" id="addBut">Add</button>
+          </div>
+        </div>
+      </form>
+      <hr>
+      <div>
+        <label for="grades">Entered grades:</label>
+        <div id="grades">None yet</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col align-self-center" id="average">
+          N/A
+        </div>
+      </div>
+      <hr>
+      <form>
+        <div class="row">
+          <div class="col-sm form-group">
+            <label for="addBut" style="opacity:0"></label>
+            <button type="button" class="btn btn-secondary form-control" id="removeLast">Remove Last</button>
+          </div>
+          <div class="col-sm form-group">
+            <label for="addBut" style="opacity:0"></label>
+            <button type="button" class="btn btn-secondary form-control" id="reset">Reset</button>
+          </div>
+      </div>
+    </form>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function() {
+        $("#alert").fadeOut(1);
+        $("#alert").css({
+          opacity: '100'
+        });
+      });
+      function makeList(enteredGrades) {
+        var list = "";
+        for (var i = 0; i < enteredGrades.length; i++) {
+          list += enteredGrades[i][0] + "*" + enteredGrades[i][1] + "   ";
+        }
+        return list;
+      };
+      function average(enteredGrades) {
+        var weightedGrades = [];
+        var totalGrades = 0;
+        var totalWeights = 0;
+        for (var i = 0; i < enteredGrades.length; i++) {
+          weightedGrades.push(enteredGrades[i][0] * enteredGrades[i][1]);
+          totalGrades += weightedGrades[i];
+          totalWeights += enteredGrades[i][1] * 1;
+        }
+        console.log("Weighted Grades List: " + weightedGrades);
+        console.log("Total Grades: " + totalGrades);
+        console.log("Total Weights: " + totalWeights);
+        var averGrades = String(totalGrades / totalWeights);
+        if (averGrades.length > 4) {
+          oldAverage = averGrades;
+          var averGrades = [];
+          for (var i = 0; i < 4; i++) {
+            averGrades.push(oldAverage[i]);
+          }
+        }
+        return averGrades;
+      }
+      function inputCheck() {
+        if (document.getElementById("grade").value >= 0.5 && document.getElementById("grade").value <= 6.5) {
+          if (document.getElementById("weight").value >= 0 && document.getElementById("weight").value <= 100) {
+            return true;
+          }
+        }
+        return false;
+      }
+      var enteredGrades = [];
+      var grade;
+      var weight = 1;
+      $("#addBut").on("click", function() {
+        if (inputCheck()) {
+          console.log("CLICK: Add Grade Button");
+          grade = document.getElementById("grade").value;
+          console.log("Grade: " + grade);
+          weight = document.getElementById("weight").value;
+          console.log("Weight: " + weight);
+          var array = [];
+          array.push(grade);
+          array.push(weight);
+          enteredGrades.push(array);
+          $("#grades").html(makeList(enteredGrades));
+          $("#average").html(average(enteredGrades));
+        }
+        else {
+          $("#alert").fadeIn(400);
+        }
+      })
+      $("#alertClose").on("click", function() {
+        $("#alert").fadeOut(400);
+      })
+      $("#removeLast").on("click", function() {
+        enteredGrades.pop();
+        $("#grades").html(makeList(enteredGrades));
+        $("#average").html(average(enteredGrades));
+      })
+      $("#reset").on("click", function() {
+        enteredGrades = [];
+        $("#grades").html("None");
+        $("#average").html("N/A");
+      })
+    </script>
+  </body>
+</html>
